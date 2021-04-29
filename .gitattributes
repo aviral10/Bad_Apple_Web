@@ -1,0 +1,5 @@
+static/* linguist-vendored
+static/libraries/* linguist-vendored
+
+static/libraries/addons* linguist-vendored
+static/style.css linguist-vendored=false

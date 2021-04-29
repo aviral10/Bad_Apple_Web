@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}
+
+Home
+
+{% endblock %}
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+<div id="test">
+    <h1>Bad-Apple</h1>
+    <button onclick="geranimo()">Commence</button> 
+    <button onclick="istop()">Pause</button> 
+    <p id="mat">TEST</p>
+    
+</div>
+
+<script>
+    let gb = 0;
+    let x;
+    function geranimo(){
+        x = setInterval(valhalla, 10);
+    }
+
+    function istop(){
+        gb = 6000;       //Manual brake
+    }
+
+    function valhalla(){
+        if(gb >= 6000){
+            clearInterval(x);
+        }
+        gb++;
+        let name = window.origin;   // Main address of the current page
+        name += "/commence";
+
+        
+        //Juice of the entire project
+        fetch(name)
+        .then((response) => {return response.json()})
+        .then(function (json) {
+            let text = json["matrix"];
+
+            const st = (item) => {
+                let n = item.length;
+                ss = "<pre>";
+                for(let i=0;i<n;i++){
+                    ts = "";
+                    let nn = item[i].length;
+                    for(let j=0;j<nn;j++){
+                        if(item[i][j] == "0"){
+                            ts += "   ";
+                        }else{
+                            ts += "8  ";
+                        }
+                    }
+                    ss += ts + "</br>"   ;
+                }
+                ss += "</pre>"
+                return ss;
+            }
+            document.getElementById("mat").innerHTML = st(text);
+        });
+    }
+</script>
+{% endblock %}

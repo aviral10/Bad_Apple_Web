@@ -1,0 +1,4 @@
+Flask
+numpy
+imutils
+opencv-python
